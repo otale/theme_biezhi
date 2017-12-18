@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${head_title()}</title>
+    <meta name="description" content="I'm a web enthusiastic student who loves experimenting ">
+    <meta name="author" content="François Chalifour">
+    <meta name="theme-color" content="#2c3e4f">
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500">
+    <link rel="stylesheet" href="${theme_url('/static/caomei/caomei.css')}">
+    <link rel="stylesheet" href="${theme_url('/static/css/main.css?v=0.0.20')}">
+    <link rel="canonical" href="https://francoischalifour.com/">
+    <link rel="alternate" type="application/rss+xml" title="${site_title()}" href="/feed.xml">
+    <link rel="manifest" href="/assets/manifest.json">
+<body>
+<header class="site-top-header">
+    <div class="wrapper"><a class="site-title" href="/">${site_title()}</a>
+        <nav class="site-nav">
+            <ul class="list-inline">
+                <li>
+                    <a class="site-nav-page-link #if(is_slug('/')) is-active #end" href="/">首页</a>
+                </li>
+                <li>
+                    <a class="site-nav-page-link #if(is_slug('about')) is-active #end" href="/about.html">关于</a>
+                </li>
+                <li>
+                    <a class="site-nav-page-link #if(is_slug('archives')) is-active #end" href="/archives.html">归档</a>
+                </li>
+                <li>
+                    <a class="site-nav-page-link #if(is_slug('projects')) is-active #end" href="/projects.html">项目</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,103 @@
+#include('./partial/head.html',{home_page:1})
+<div class="page-content">
+    <div class="header home huge">
+        <div class="overlay"></div>
+        <h1 class="header-heading">你需要的不是力量，而是激情！</h1>
+        <div class="header-subtitle">别活得像个机器，有点儿人性和信仰吧孩子们。</div>
+    </div>
+    <aside class="site-info">
+        <div><a href="https://www.google.com/maps/place/上海,+中国"
+                title="中国上海">
+            <i class="czs-location"></i>
+            <div>坐标</div>
+        </a></div>
+        <div><a href="mailto:biezhi.me@gmail.com" title="Send me an email">
+            <i class="czs-telegram"></i>
+            <div>邮件</div>
+        </a></div>
+        <div><a href="https://dev-cheats.com" title="View my resume">
+            <i class="czs-command"></i>
+            <div>开发者秘籍</div>
+        </a></div>
+    </aside>
+    #set( articlePage = articles(5) )
+    #for(article : articlePage.rows)
+    #if(for.index == 1)
+    <a class="post-link" href="/lab/medium-image-zoom/">
+        <section class="header post-featured project-post">
+            <div class="overlay"
+                 style="background-image: url('${show_thumb(article)}');background-color: #37474F;"></div>
+            <a href="${permalink()}" title="${title()}"><h3 class="header-heading">${title()}</h3></a>
+            <div class="post-featured-subtitle">
+                <ul class="list-inline tags">
+                    #for(item : tag_list())
+                    <li class="tag header-tag">#${item}</li>
+                    #end
+                </ul>
+            </div>
+        </section>
+    </a>
+    #end
+    #end
+
+    <section class="wrapper">
+        <ul class="work-list grid">
+            #for(article : articlePage.rows)
+            #if(for.index > 1)
+            <li class="grid-item">
+                <div class="work-panel">
+                    <div class="work-cover">
+                        <div class="overlay" style="background-image: url('${show_thumb(article)}');background-color: #37474F;"></div>
+                        <h3 class="work-title">
+                            <a class="work-link" title="${title()}" href="${permalink()}">${title()}</a>
+                        </h3>
+                        <div style="width: 250px;position: absolute; right: -142px; font-size: 14px; opacity: .6;">
+                            ${created('yyyy年MM月dd日')}
+                        </div>
+                    </div>
+                    <div class="work-overview">
+                        <p>${intro(82)}...</p>
+                        <ul class="list-inline tags">
+                            #for(item : tag_list())
+                            <li class="tag"><a href="">#${item}</a></li>
+                            #end
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            #end
+            #end
+
+            #if(articlePage.hasPrevPage)
+            <a href="/page/${articlePage.prevPage}">上一页</a>
+            #end
+
+            #if(articlePage.hasNextPage)
+            <a href="/page/${articlePage.nextPage}">下一页</a>
+            #end
+
+        </ul>
+    </section>
+    <section class="header discover">
+        <div class="wrapper">
+            <div class="grid discover-grid">
+                <div class="column discover-column"><a href="/lab/">
+                    <div id="lab-icon"></div>
+                    <h2>Visit my lab</h2></a> My experimental secret side
+                </div>
+                <div class="column discover-column"><a href="/projects/">
+                    <div id="project-icon"></div>
+                    <h2>Discover my projects</h2></a> The work I've crafted over the years
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="header contact">
+        <div class="overlay"></div>
+        <h2 class="header-heading"> Say hi</h2>
+        <div class="header-subtitle"> Send me an <a href="mailto:francois.chalifour@gmail.com" class="tag header-tag">email</a>
+            or a <a href="https://twitter.com/FrancoisChlfr" class="tag header-tag">tweet</a>.
+        </div>
+    </section>
+</div>
+#include('./partial/footer.html')

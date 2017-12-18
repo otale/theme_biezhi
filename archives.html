@@ -1,0 +1,28 @@
+#include('./partial/head.html', {title: '文章归档'})
+<div class="page-content">
+    <div class="header about">
+        <div class="header-heading">文章归档</div>
+        <!--<div class="header-subtitle"> A little bit about myself</div>-->
+    </div>
+    <div class="wrapper">
+        <p>
+        #for(archive : archives)
+        <section><h2>${archive.date_str}</h2>
+            <ul class="timeline">
+                #for(article : archive.articles)
+                <li class="timeline__event" data-date="2015 ﹣ 2018">
+                    <div class="timeline__event__dot"></div>
+                    <p class="timeline__event__info">${created('yyyy-MM-dd')}</p>
+                    <div class="timeline__event__title">
+                        <a href="${(permalink())}">${title()}</a>
+                    </div>
+                    <p>&nbsp;</p>
+                </li>
+                #end
+            </ul>
+        </section>
+        #end
+        </p>
+    </div>
+</div>
+#include('./partial/footer.html')

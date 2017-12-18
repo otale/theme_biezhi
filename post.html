@@ -1,0 +1,99 @@
+#include('./partial/head.html')
+<link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/androidstudio.min.css" rel="stylesheet">
+<div class="page-content">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <header class="header huge project-post"
+                style="background-image: url('${show_thumb(article)}');background-color: #00AB6C;">
+            <div class="overlay"></div>
+            <h1 class="header-heading">${title()}</h1>
+            <div class="header-subtitle">
+                <time datetime="2016-07-26T00:00:00+02:00" itemprop="datePublished">${created('yyyy-MM-dd')}</time>
+                • ${hits()} 次阅读
+                <ul class="list-inline tags">
+                    #for(item : tag_list())
+                    <li class="tag header-tag">#${item}</li>
+                    #end
+                </ul>
+            </div>
+        </header>
+        <div class="wrapper">
+            <div class="post-content" id="post-content" itemprop="articleBody">
+                ${show_content()}
+            </div>
+            <footer class="post-footer" id="post-footer">
+                <blockquote>
+                    本文由 <a href="">${theme_option('author') ?! 'biezhi'}</a> 创作，
+                    采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a>
+                    国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名。
+                </blockquote>
+            </footer>
+        </div>
+        <footer class="next-posts">
+            <div class="post-related previous-post" style="background-color: #3b4753">
+                <div class="wrapper">
+                    #set(prev = article_prev())
+                    #if(null != prev)
+                    <a href="${permalink(prev)}" title="上一篇文章">
+                        <div class="suptitle"> 上一篇</div>
+                        <div class="title">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="#fff"
+                                      d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
+                            </svg>
+                            <span>${title(prev)}</span>
+                        </div>
+                    </a>
+                    #else
+                    <a title="上一篇文章">
+                        <div class="suptitle"> </div>
+                        <div class="title">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="#fff"
+                                      d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
+                            </svg>
+                            <span>已经是第一篇文章了</span>
+                        </div>
+                    </a>
+                    #end
+                </div>
+            </div>
+            <div class="post-related next-post" style="background-color: #1CB5E0">
+                <div class="wrapper">
+                    #set(next = article_next())
+                    #if(null != next)
+                    <a href="${permalink(next)}" title="下一篇文章">
+                        <div class="suptitle"> 下一篇</div>
+                        <div class="title">
+                            <span>${title(next)}</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="#fff"
+                                      d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                            </svg>
+                        </div>
+                    </a>
+                    #else
+                    <a title="下一篇文章">
+                        <div class="suptitle"> </div>
+                        <div class="title">
+                            <span>已经是最后一篇了</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <path fill="#fff"
+                                      d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"/>
+                            </svg>
+                        </div>
+                    </a>
+                    #end
+                </div>
+            </div>
+        </footer>
+    </article>
+</div>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="${theme_url('/static/js/medium-zoom.min.js')}"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+    mediumZoom('img', {
+        background: '#000'
+    });
+</script>
+#include('./partial/footer.html')
